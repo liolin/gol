@@ -32,4 +32,5 @@
 # Executables
 *.exe
 *.out
+*.out.dsYM
 *.app
