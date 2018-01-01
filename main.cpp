@@ -28,27 +28,23 @@ void printOut(vector<vector<int> > field)
 
 int main()
 {
-	// init field
 	const int DEAD = 0;
 	const int ALIVE = 1;
-	const int SIZE = 3;
+	int SIZE = 0;
+
+	cin >> SIZE;
 	vector<vector<int> > field(SIZE, vector<int>(SIZE));
 	vector<vector<int> > newField(SIZE, vector<int>(SIZE));
 
-	/*
-	  D A D
-	  D A D
-	  D A D
-	 */
-	field[0][0] = DEAD;
-	field[0][1] = DEAD;
-	field[0][2] = DEAD;
-	field[1][0] = ALIVE;
-	field[1][1] = ALIVE;
-	field[1][2] = ALIVE;
-	field[2][0] = DEAD;
-	field[2][1] = DEAD;
-	field[2][2] = DEAD;
+
+	// read field configuration from stdin
+	for(int x = 0; x < SIZE; x++)
+	{
+		for(int y = 0; y < SIZE; y++)
+		{
+			cin >> field[x][y];
+		}
+	}	
 
 	while(true)
 	{
