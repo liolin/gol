@@ -7,6 +7,12 @@ using namespace std;
 
 // a game of live implemenation
 
+/**
+ * @param vector<vector<int> > field
+ *  The field which should be printed
+ * @return
+ *  void
+ */
 void printOut(vector<vector<int> > field)
 {
 	cout << "\033[2J";
@@ -19,14 +25,6 @@ void printOut(vector<vector<int> > field)
 	}
 	cout << '\n';
 }
-
-
-/*
-  what x need:
-  - a data structure cell (dead, alivce)
-  - a field (vector<vector<cell, cell > >
-  - the rules
-*/
 
 int main()
 {
@@ -127,6 +125,7 @@ int main()
 				}
 			}
 		}
+
 		// sleep for 1 second
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		printOut(newField);
