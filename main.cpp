@@ -142,8 +142,6 @@ int main()
 		this_thread::sleep_for(chrono::milliseconds(500));
 		printOut(newField);
 		field = newField;
-
-		std::cin.ignore();
 	}
 	
 	return 0;
