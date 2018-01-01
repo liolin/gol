@@ -16,10 +16,6 @@ using namespace std;
  */
 void printOut(vector<vector<int> > field)
 {
-	const int BACKGROUND_COLOR_DEAD = 41;
-	const int FOREGROUND_COLOR_DEAD = 31;
-	const int BACKGROUND_COLOR_ALIVE = 42;
-	const int FOREGROUND_COLOR_ALIVE = 32;
 	const string NORMAL_SETTINGS = "\033[0m";
 	
 	// clear
@@ -29,15 +25,9 @@ void printOut(vector<vector<int> > field)
 		for(int y = 0; y < field[x].size(); y++)
 		{
 			// write on position x / y
-			if(field[x][y] == 0)
+			if(field[x][y] == 1)
 			{
-				cout << "\033[0;" << FOREGROUND_COLOR_DEAD << ";" << BACKGROUND_COLOR_DEAD << "m";
-				cout << "\033[" << y+1 << ";" << x+1 << "H" << field[x][y];
-			}
-			else
-			{
-				cout << "\033[0;" << FOREGROUND_COLOR_ALIVE << ";" << BACKGROUND_COLOR_ALIVE << "m";
-				cout << "\033[" << y+1 << ";" << x+1 << "H" << field[x][y];
+				cout << "\033[" << y+1 << ";" << x+1 << "H" << 0;
 			}
 		}
 	}
@@ -149,7 +139,7 @@ int main()
 		}
 
 		// sleep for 1 second
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(250));
 		printOut(newField);
 		field = newField;
 	}
