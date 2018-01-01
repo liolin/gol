@@ -54,7 +54,7 @@ int main()
 	cin >> SIZE;
 	vector<vector<int> > field(SIZE, vector<int>(SIZE));
 	vector<vector<int> > newField(SIZE, vector<int>(SIZE));
-	const int BOX_SIZE = (SIZE < 3) ? SIZE : 3;
+	const int BOX_SIZE = (SIZE > 3) ? SIZE : 3;
 
 
 	
@@ -108,7 +108,7 @@ int main()
 				}
 			
 				// third row
-				if(y + 1 >= 0 && y + 1 < BOX_SIZE)
+				if((y + 1) < BOX_SIZE)
 				{
 					if(x + 1 < BOX_SIZE)
 					{
@@ -128,6 +128,10 @@ int main()
 					if(nOfN == 3)
 					{
 						newField[x][y] = ALIVE;
+					}
+					else
+					{
+						newField[x][y] = DEAD;
 					}
 				}
 				else
