@@ -57,6 +57,7 @@ int main()
 			cin >> field[x][y];
 		}
 	}	
+	cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
 	while(true)
 	{
@@ -139,7 +140,7 @@ int main()
 		}
 
 		// sleep for 1 second
-		std::this_thread::sleep_for(std::chrono::milliseconds(250));
+		this_thread::sleep_for(chrono::milliseconds(1000));
 		printOut(newField);
 		field = newField;
 	}
