@@ -49,6 +49,18 @@ vector<vector<int> > calc(vector<vector<int> > field)
 	const int SIZE = field.size();
 	const int BOX_SIZE = (SIZE > 3) ? SIZE : 3;
 	vector<vector<int> > newField(SIZE, vector<int>(SIZE));
+
+	auto func = [](vector<vector<int> > field, int x, int y, int boxSize){
+		int nOfN = 0;
+		if(y - 1 >= 0)
+			nOfN += field[x][y-1];
+		
+		if(y + 1 < boxSize)
+			nOfN += field[x][y+1];
+		
+		nOfN += field[x][y];
+		return nOfN;
+	};
 	
 	for(int x = 0; x < field.size(); x++)
 	{
@@ -57,49 +69,22 @@ vector<vector<int> > calc(vector<vector<int> > field)
 			int nOfN = 0;
 			int cellState = field[x][y];
 				
-			// first row
-			if(y - 1 >= 0)
-			{
-				if(x + 1 < BOX_SIZE)
-				{
-					nOfN += field[x+1][y-1];
-				}
-				
-				if(x-1 >= 0)
-				{
-					nOfN += field[x-1][y-1];
-				}
 
-				nOfN += field[x][y-1];
-			}
-			
-			// second row
+			// right
 			if(x + 1 < BOX_SIZE)
-			{
-				nOfN += field[x+1][y];
-			}
-			
+				nOfN += func(field, x+1, y, BOX_SIZE);
+
+			// left
 			if(x-1 >= 0)
-			{
-				nOfN += field[x-1][y];
-			}
+				nOfN += func(field, x-1, y, BOX_SIZE);
 			
-			// third row
-			if((y + 1) < BOX_SIZE)
-			{
-				if(x + 1 < BOX_SIZE)
-				{
-					nOfN += field[x+1][y+1];
-				}
-				
-				if(x-1 >= 0)
-				{
-					nOfN += field[x-1][y+1];
-				}
-
+			// center
+			if(y - 1 >= 0)
+				nOfN += field[x][y-1];
+			
+			if(y + 1 < BOX_SIZE)
 				nOfN += field[x][y+1];
-			}				
-
+			
 			if(cellState == DEAD)
 			{
 				if(nOfN == 3)
