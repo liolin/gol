@@ -68,7 +68,6 @@ vector<vector<int> > calc(vector<vector<int> > field)
 		{
 			int nOfN = 0;
 			int cellState = field[x][y];
-				
 
 			// right
 			if(x + 1 < BOX_SIZE)
@@ -88,24 +87,16 @@ vector<vector<int> > calc(vector<vector<int> > field)
 			if(cellState == DEAD)
 			{
 				if(nOfN == 3)
-				{
 					newField[x][y] = ALIVE;
-				}
 				else
-				{
 					newField[x][y] = DEAD;
-				}
 			}
 			else
 			{
 				if(nOfN < 2 || nOfN > 3)
-				{
 					newField[x][y] = DEAD;
-				}
 				else
-				{
 					newField[x][y] = ALIVE;
-				}
 			}
 		}
 	}
@@ -119,26 +110,20 @@ int main()
 
 	cin >> SIZE;
 	vector<vector<int> > field(SIZE, vector<int>(SIZE));
-
-	
 	
 	// read field configuration from stdin
 	for(int x = 0; x < SIZE; x++)
 	{
 		for(int y = 0; y < SIZE; y++)
-		{
 			cin >> field[x][y];
-		}
 	}
 	
 	while(true)
 	{
 		printOut(field);
 		field = calc(field);
-		
 		// sleep for 1 second
 		this_thread::sleep_for(chrono::milliseconds(500));
-		printOut(field);
 	}
 	
 	return 0;
