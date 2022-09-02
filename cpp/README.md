@@ -14,6 +14,3 @@ The terminal must be POSIX. The gol implementation used ANSII Escape Sequences
 3. use it: ./a.out < examples/pulsar.conf
 
 In the examples directory are some predefined examples for this gol implementation
-
-## Example
-![Example GIF](./img/example.gif)
